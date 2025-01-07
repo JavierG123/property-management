@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class PropertyController {
 
-    @Value("${pms.dummy:}") //Ponerle : al final por si no existe, no rompa.
+    @Value("${pms.dummy:}") //always use : at end to ensure if the line does not exist, dont brake the app.
     private String dummy;
 
     @Autowired
