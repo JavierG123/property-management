@@ -24,26 +24,25 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public PropertyDTO saveProperty(PropertyDTO propertyDTO) {
 
-        PropertyEntity pe = propertyConverter.ConvertDTOtoEntity(propertyDTO);
+        PropertyEntity pe = propertyConverter.convertDTOtoEntity(propertyDTO);
         pe = propertyRepository.save(pe);
 
-        PropertyDTO dto = propertyConverter.ConvertEntitytoDTO(pe);
-        return dto;
+        return propertyConverter.convertEntitytoDTO(pe);
     }
 
     @Override
-    public List<PropertyDTO> GetAllProperties() {
+    public List<PropertyDTO> getAllProperties() {
         List<PropertyEntity> listOfProps = (List<PropertyEntity>) propertyRepository.findAll();
         List<PropertyDTO> propertyList = new ArrayList<>();
         for (PropertyEntity pe : listOfProps ){
-            PropertyDTO dto = propertyConverter.ConvertEntitytoDTO(pe);
+            PropertyDTO dto = propertyConverter.convertEntitytoDTO(pe);
             propertyList.add(dto);
         }
         return propertyList;
     }
 
     @Override
-    public PropertyDTO UpdateProperty(PropertyDTO propertyDTO, Long propertyId) {
+    public PropertyDTO updateProperty(PropertyDTO propertyDTO, Long propertyId) {
 
         Optional<PropertyEntity> optEntity = propertyRepository.findById(propertyId);
         PropertyDTO dto = null;
@@ -51,11 +50,9 @@ public class PropertyServiceImpl implements PropertyService {
             PropertyEntity pe = optEntity.get(); // Data from database
             pe.setTitle(propertyDTO.getTitle());
             pe.setAddress(propertyDTO.getAddress());
-            pe.setOwnerEmail(propertyDTO.getOwnerEmail());
-            pe.setOwnerName(propertyDTO.getOwnerName());
             pe.setPrice(propertyDTO.getPrice());
             pe.setDescription(propertyDTO.getDescription());
-            dto = propertyConverter.ConvertEntitytoDTO(pe);
+            dto = propertyConverter.convertEntitytoDTO(pe);
             propertyRepository.save(pe);
         }
         return dto;
@@ -68,7 +65,7 @@ public class PropertyServiceImpl implements PropertyService {
         if(optEntity.isPresent()){
             PropertyEntity pe = optEntity.get(); // Data from database
             pe.setDescription(propertyDTO.getDescription());
-            dto = propertyConverter.ConvertEntitytoDTO(pe);
+            dto = propertyConverter.convertEntitytoDTO(pe);
             propertyRepository.save(pe);
         }
         return dto;
@@ -78,10 +75,10 @@ public class PropertyServiceImpl implements PropertyService {
     public PropertyDTO updatePropertyPrice(PropertyDTO propertyDTO, Long propertyId) {
         Optional<PropertyEntity> optEntity = propertyRepository.findById(propertyId);
         PropertyDTO dto = null;
-        if(optEntity.isPresent() && !(optEntity.get().getPrice() == null)){
+        if(optEntity.isPresent() && propertyDTO.getPrice() != null){
             PropertyEntity pe = optEntity.get(); // Data from database
             pe.setPrice(propertyDTO.getPrice());
-            dto = propertyConverter.ConvertEntitytoDTO(pe);
+            dto = propertyConverter.convertEntitytoDTO(pe);
             propertyRepository.save(pe);
         }else {
            throw new IllegalStateException("La propiedad no existe o el precio es nulo");
@@ -90,7 +87,7 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public void DeleteProperty(Long propertyId) {
+    public void deleteProperty(Long propertyId) {
         propertyRepository.deleteById(propertyId);
     }
 }

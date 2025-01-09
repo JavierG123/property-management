@@ -5,21 +5,11 @@ public class PropertyDTO {
     private Long id;
     private String title;
     private String description;
-    private String ownerName;
-    private String ownerEmail;
     private Double price;
     private String address;
 
     public PropertyDTO() {
-    }
-
-    public PropertyDTO(String title, String description, String ownerName, String ownerEmail, Double price, String address) {
-        this.title = title;
-        this.description = description;
-        this.ownerName = ownerName;
-        this.ownerEmail = ownerEmail;
-        this.price = price;
-        this.address = address;
+        // Empty because is to create empty DTO
     }
 
     public Long getId() {
@@ -46,21 +36,6 @@ public class PropertyDTO {
         this.description = description;
     }
 
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
-
-    public String getOwnerEmail() {
-        return ownerEmail;
-    }
-
-    public void setOwnerEmail(String ownerEmail) {
-        this.ownerEmail = ownerEmail;
-    }
 
     public Double getPrice() {
         return price;
@@ -83,8 +58,6 @@ public class PropertyDTO {
         return "PropertyDTO{" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", ownerName='" + ownerName + '\'' +
-                ", ownerEmail='" + ownerEmail + '\'' +
                 ", price=" + price +
                 ", address='" + address + '\'' +
                 '}';
