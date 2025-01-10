@@ -2,6 +2,7 @@ package com.example.property_management.controller;
 
 import com.example.property_management.dto.PropertyDTO;
 import com.example.property_management.service.PropertyService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -9,13 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.Logger;
+
 
 @RestController
 @RequestMapping("/api/v1")
 public class PropertyController {
 
-    Logger logger = Logger.getLogger(getClass().getName());
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${pms.dummy:}") //always use : at end to ensure if the line does not exist, dont brake the app.
     private String dummy;
