@@ -5,22 +5,9 @@ public class PropertyDTO {
     private Long id;
     private String title;
     private String description;
-    private String ownerName;
-    private String ownerEmail;
     private Double price;
     private String address;
-
-    public PropertyDTO() {
-    }
-
-    public PropertyDTO(String title, String description, String ownerName, String ownerEmail, Double price, String address) {
-        this.title = title;
-        this.description = description;
-        this.ownerName = ownerName;
-        this.ownerEmail = ownerEmail;
-        this.price = price;
-        this.address = address;
-    }
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -46,22 +33,6 @@ public class PropertyDTO {
         this.description = description;
     }
 
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
-
-    public String getOwnerEmail() {
-        return ownerEmail;
-    }
-
-    public void setOwnerEmail(String ownerEmail) {
-        this.ownerEmail = ownerEmail;
-    }
-
     public Double getPrice() {
         return price;
     }
@@ -78,15 +49,24 @@ public class PropertyDTO {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "PropertyDTO{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", ownerName='" + ownerName + '\'' +
-                ", ownerEmail='" + ownerEmail + '\'' +
-                ", price=" + price +
-                ", address='" + address + '\'' +
-                '}';
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public PropertyDTO(Long id, String title, String description, Double price, String address, Long userId) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.address = address;
+        this.userId = userId;
+    }
+
+    public PropertyDTO() {
+        // Empty constructor
     }
 }
