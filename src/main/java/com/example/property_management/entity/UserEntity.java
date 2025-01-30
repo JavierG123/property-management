@@ -17,7 +17,7 @@ public class UserEntity {
     private String password;
 
     public UserEntity() {
-        // To create a empty user entity
+        // To create an empty user entity
     }
 
     public Long getId() {

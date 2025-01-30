@@ -7,10 +7,7 @@ public class PropertyDTO {
     private String description;
     private Double price;
     private String address;
-
-    public PropertyDTO() {
-        // Empty because is to create empty DTO
-    }
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -36,7 +33,6 @@ public class PropertyDTO {
         this.description = description;
     }
 
-
     public Double getPrice() {
         return price;
     }
@@ -53,13 +49,24 @@ public class PropertyDTO {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "PropertyDTO{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", address='" + address + '\'' +
-                '}';
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public PropertyDTO(Long id, String title, String description, Double price, String address, Long userId) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.address = address;
+        this.userId = userId;
+    }
+
+    public PropertyDTO() {
+        // Empty constructor
     }
 }
